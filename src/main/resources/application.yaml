@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    driverClassName: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    database-platform: ${SPRING_JPA_DATABASE_PLATFORM}
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+  h2:
+    console:
+      enabled: ${SPRING_H2_CONSOLE_ENABLED}
