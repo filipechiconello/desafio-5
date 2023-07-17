@@ -19,7 +19,8 @@ public enum UsersEnum {
     USER_ALREADY_EXIST("RGT_USR_002", "Usuário já existe", 409),
     INVALID_OTP("RGT_USR_004", "O código OTP é inválido", 400),
     INVALID_PASSWORD("RGT_USR_005", "Senha atual inválida", 400),
-    EMAIL_NOT_FOUND("EMAIL_NOT_FOUND", "Email não encontrado", 404);
+    EMAIL_NOT_FOUND("EMAIL_NOT_FOUND", "Email não encontrado", 404),
+    BALANCE_NOT_AVAILABLE("BALANCE_NOT_AVAILABLE", "Balance not available", 400);
 
     private String code;
     private String message;

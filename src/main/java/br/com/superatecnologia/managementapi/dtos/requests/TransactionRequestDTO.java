@@ -12,4 +12,6 @@ import java.math.BigDecimal;
 public class TransactionRequestDTO {
 
     private BigDecimal value;
+    private String payerName;
+    private String receiverName;
 }

@@ -1,6 +1,9 @@
 package br.com.superatecnologia.managementapi.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +26,9 @@ public class AccountEntity {
     private String password;
     private BigDecimal balance;
 
-    @OneToMany
-    private List<TransactionEntity> transactions;
+    private List<Long> transactions;
+
+    public AccountEntity(Long id) {
+        this.id = id;
+    }
 }

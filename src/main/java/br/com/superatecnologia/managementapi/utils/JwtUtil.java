@@ -23,6 +23,8 @@ public class JwtUtil {
     @Value("${auth.util.jwt.secret}")
     private String SECRET;
 
+    private final String ISSUER = "supera-tecnologia";
+
     private static final String KEY_EMAIL = "EMAIL";
     private static final String KEY_ID = "ID";
     private static final String KEY_NAME = "NAME";
@@ -31,7 +33,7 @@ public class JwtUtil {
         try {
             log.info("generating jwt token for user {}", email);
             return JWT.create()
-                    .withIssuer("pic-pay")
+                    .withIssuer(ISSUER)
                     .withClaim(KEY_ID, id)
                     .withClaim(KEY_EMAIL, email)
                     .withClaim(KEY_NAME, name)
@@ -46,7 +48,7 @@ public class JwtUtil {
     public void validateToken(String jwtToken) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).withIssuer("pic-pay").build();
+            JWTVerifier verifier = JWT.require(algorithm).withIssuer(ISSUER).build();
             verifier.verify(jwtToken);
         } catch (Exception e) {
             log.warn("invalid token");
@@ -57,7 +59,7 @@ public class JwtUtil {
     public JwtResponseDTO getAllClaims(String token) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         JWTVerifier verifier = JWT.require(algorithm)
-                .withIssuer("supera-tecnologia")
+                .withIssuer(ISSUER)
                 .build();
 
         DecodedJWT jwt = verifier.verify(token);

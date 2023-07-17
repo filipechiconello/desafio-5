@@ -6,6 +6,7 @@ import br.com.superatecnologia.managementapi.dtos.responses.AccountResponseDTO;
 import br.com.superatecnologia.managementapi.entities.AccountEntity;
 import br.com.superatecnologia.managementapi.exceptions.AccountException;
 import br.com.superatecnologia.managementapi.exceptions.enums.UsersEnum;
+import br.com.superatecnologia.managementapi.repositories.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -19,21 +20,35 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class UsersMappers {
+public class AccountMappers {
 
     @Autowired
     private final ModelMapper mapper;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+
     public AccountEntity toEntity(AccountRequestDTO request) {
-        return mapper.map(request, AccountEntity.class);
+        AccountEntity accountEntity = mapper.map(request, AccountEntity.class);
+        accountEntity.setTransactions(new ArrayList<>());
+
+        return accountEntity;
     }
 
     public AccountResponseDTO toDto(AccountEntity entity) {
-        return mapper.map(entity, AccountResponseDTO.class);
-    }
+        List<Long> transactionsIds = new ArrayList<>();
+        AccountResponseDTO accountResponseDTO = mapper.map(entity, AccountResponseDTO.class);
 
-    public AccountRequestDTO responseToRequest(AccountResponseDTO response) {
-        return mapper.map(response, AccountRequestDTO.class);
+        transactionRepository.findAll().forEach(transactionEntity -> {
+            if (transactionEntity.getPayer().getName().equals(entity.getName())
+                    || transactionEntity.getReceiver().getName().equals(entity.getName())) {
+                transactionsIds.add(transactionEntity.getId());
+            }
+        });
+
+        accountResponseDTO.setTransactions(transactionsIds);
+
+        return accountResponseDTO;
     }
 
     public List<AccountResponseDTO> toDtoList(Iterable<AccountEntity> list) {
