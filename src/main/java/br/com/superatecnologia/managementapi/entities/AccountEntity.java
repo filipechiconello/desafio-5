@@ -1,19 +1,17 @@
 package br.com.superatecnologia.managementapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "accounts")
+@Entity(name = "account")
 public class AccountEntity {
 
     @Id
@@ -23,6 +21,8 @@ public class AccountEntity {
     private String name;
     private String email;
     private String password;
-    private int number;
     private BigDecimal balance;
+
+    @OneToMany
+    private List<TransactionEntity> transactions;
 }

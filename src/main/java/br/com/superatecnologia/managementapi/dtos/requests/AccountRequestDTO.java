@@ -1,9 +1,5 @@
 package br.com.superatecnologia.managementapi.dtos.requests;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +19,6 @@ public class AccountRequestDTO {
     private String password;
 
     private String confirmPassword;
-    private int number;
     private BigDecimal balance;
     private int otp;
 }

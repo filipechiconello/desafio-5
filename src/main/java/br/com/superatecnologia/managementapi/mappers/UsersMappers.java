@@ -4,6 +4,8 @@ package br.com.superatecnologia.managementapi.mappers;
 import br.com.superatecnologia.managementapi.dtos.requests.AccountRequestDTO;
 import br.com.superatecnologia.managementapi.dtos.responses.AccountResponseDTO;
 import br.com.superatecnologia.managementapi.entities.AccountEntity;
+import br.com.superatecnologia.managementapi.exceptions.AccountException;
+import br.com.superatecnologia.managementapi.exceptions.enums.UsersEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -46,7 +48,7 @@ public class UsersMappers {
     public void verifyPasswordAndPasswordConfirmation(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             log.warn("passwords do not match");
-            throw new UsersException(UsersEnum.PASSWORD_DO_NOT_MATCH);
+            throw new AccountException(UsersEnum.PASSWORD_DO_NOT_MATCH);
         }
     }
 }
