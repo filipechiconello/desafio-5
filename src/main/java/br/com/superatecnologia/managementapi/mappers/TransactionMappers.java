@@ -37,11 +37,9 @@ public class TransactionMappers {
     public TransactionEntity toEntity(TransactionRequestDTO request) {
         TransactionEntity transactionEntity = mapper.map(request, TransactionEntity.class);
         transactionEntity.setDate(LocalDateTime.now());
-        List<Long> transactionsIdList = new ArrayList<>();
 
         AccountEntity payer = accountService.findByName(request.getPayerName());
         AccountEntity receiver = accountService.findByName(request.getReceiverName());
-        transactionsIdList.add(transactionEntity.getId());
 
         if (payer.getBalance().doubleValue() <= request.getValue().doubleValue()) {
             throw new AccountException(UsersEnum.BALANCE_NOT_AVAILABLE);
