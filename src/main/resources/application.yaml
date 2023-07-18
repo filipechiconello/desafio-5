@@ -1,11 +1,11 @@
 swagger:
   contact:
     name: 'Filipe Chiconello'
-    email: "filipe360@gmail.com"
+    email: "filipe.chiconello@geradordedevs.com.br"
   app:
-    name: Management API
+    name: PicPay API
     version: 0.1.0
-    description: API responsible for management for accounts and transactions.
+    description: API responsible for transactions from balances from users.
   base:
     package: br.com.superatecnologia.managementapi.controllers
 
