@@ -1,12 +1,13 @@
 package br.com.superatecnologia.managementapi.services;
 
 import br.com.superatecnologia.managementapi.entities.TransactionEntity;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface TransactionService {
 
-    List<TransactionEntity> findAll();
+    Page<TransactionEntity> findAll(Integer page);
 
     TransactionEntity save(TransactionEntity transactionEntity);
 

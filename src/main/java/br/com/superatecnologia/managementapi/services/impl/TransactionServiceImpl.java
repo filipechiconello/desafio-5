@@ -7,9 +7,10 @@ import br.com.superatecnologia.managementapi.repositories.TransactionRepository;
 import br.com.superatecnologia.managementapi.services.TransactionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Slf4j
@@ -19,9 +20,11 @@ public class TransactionServiceImpl implements TransactionService {
     private TransactionRepository transactionRepository;
 
     @Override
-    public List<TransactionEntity> findAll() {
+    public Page<TransactionEntity> findAll(Integer page) {
         log.info("listing all transactions");
-        return transactionRepository.findAll();
+        final int size = 8;
+        Pageable pageable = PageRequest.of(page - 1, size);
+        return transactionRepository.findAll(pageable);
     }
 
     @Override
