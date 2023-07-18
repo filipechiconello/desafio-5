@@ -11,3 +11,24 @@ spring:
   h2:
     console:
       enabled: ${SPRING_H2_CONSOLE_ENABLED}
+
+cloud:
+  aws:
+    region:
+      static: us-east-1
+      auto: false
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
+
+
+email:
+  from: ${EMAIL_FROM}
+  subject:
+    otp: ${EMAIL_SUBJECT_OTP}
+    signup: ${EMAIL_SUBJECT_SIGNUP}
+
+auth:
+  util:
+    jwt:
+      secret: ${JWT_SECRET}
