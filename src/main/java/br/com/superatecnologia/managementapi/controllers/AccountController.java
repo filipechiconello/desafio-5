@@ -3,9 +3,6 @@ package br.com.superatecnologia.managementapi.controllers;
 import br.com.superatecnologia.managementapi.dtos.requests.AccountRequestDTO;
 import br.com.superatecnologia.managementapi.dtos.responses.AccountResponseDTO;
 import br.com.superatecnologia.managementapi.facades.AccountFacade;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +17,6 @@ public class AccountController {
     @Autowired
     private AccountFacade accountFacade;
 
-    @Operation(summary = "creating new account")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "creating new account successfully"),
-            @ApiResponse(responseCode = "400", description = "bad request")
-    })
     @PostMapping
     public ResponseEntity<AccountResponseDTO> save(@RequestBody AccountRequestDTO accountRequestDTO) {
         return new ResponseEntity<>(accountFacade.save(accountRequestDTO), HttpStatus.CREATED);
