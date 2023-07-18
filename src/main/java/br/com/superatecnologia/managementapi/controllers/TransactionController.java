@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/transaction")
-public class TransactionControllers {
+public class TransactionController {
 
     @Autowired
     private TransactionFacade transactionFacade;

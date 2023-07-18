@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/account")
-public class AccountControllers {
+public class AccountController {
 
     @Autowired
     private AccountFacade accountFacade;
