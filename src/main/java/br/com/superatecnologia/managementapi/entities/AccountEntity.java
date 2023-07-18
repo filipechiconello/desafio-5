@@ -1,5 +1,6 @@
 package br.com.superatecnologia.managementapi.entities;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,6 @@ public class AccountEntity {
     private String email;
     private String password;
     private BigDecimal balance;
-
     private List<Long> transactions;
 
     public AccountEntity(Long id) {

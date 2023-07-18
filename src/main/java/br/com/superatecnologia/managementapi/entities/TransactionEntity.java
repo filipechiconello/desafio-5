@@ -2,6 +2,7 @@ package br.com.superatecnologia.managementapi.entities;
 
 import br.com.superatecnologia.managementapi.enums.TypeEnum;
 import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
