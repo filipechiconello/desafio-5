@@ -1,7 +1,8 @@
-package br.com.superatecnologia.managementapi.controller.impl;
+package br.com.superatecnologia.managementapi.controller;
 
 import br.com.superatecnologia.managementapi.controllers.TransactionController;
 import br.com.superatecnologia.managementapi.dtos.requests.TransactionRequestDTO;
+import br.com.superatecnologia.managementapi.enums.TypeEnum;
 import br.com.superatecnologia.managementapi.facades.TransactionFacade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -46,6 +47,7 @@ public class TransactionControllerTest {
     private TransactionRequestDTO transactionRequestDTO() {
         return new TransactionRequestDTO(
                 new BigDecimal("230000"),
+                TypeEnum.DEPOSIT,
                 "PayerName",
                 "ReceiverName"
         );

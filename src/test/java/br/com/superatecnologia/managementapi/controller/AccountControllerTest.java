@@ -1,4 +1,4 @@
-package br.com.superatecnologia.managementapi.controller.impl;
+package br.com.superatecnologia.managementapi.controller;
 
 import br.com.superatecnologia.managementapi.controllers.AccountController;
 import br.com.superatecnologia.managementapi.dtos.requests.AccountRequestDTO;
