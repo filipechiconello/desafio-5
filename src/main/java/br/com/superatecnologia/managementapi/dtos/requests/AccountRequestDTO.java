@@ -1,5 +1,6 @@
 package br.com.superatecnologia.managementapi.dtos.requests;
 
+
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
